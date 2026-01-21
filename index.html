@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Material - Introdução ao Flutter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #004d40;
+            color: white;
+            padding: 20px 0;
+        }
+        .header-text {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .card-custom {
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<header class="text-center">
+    <h5 class="mb-1">MINISTÉRIO DA EDUCAÇÃO</h5>
+    <h6 class="mb-1">INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DO PIAUÍ – IFPI CAMPUS CAMPO MAIOR</h6>
+    <p class="mb-1 header-text">CURSO TÉCNICO EM INFORMÁTICA INTEGRADO AO MÉDIO (2025.01)</p>
+    <p class="mb-1 header-text">DISCIPLINA: TÓPICOS ESPECIAIS EM DESENVOLVIMENTO DE SISTEMAS</p>
+    <p class="header-text">PROFESSOR: NAIRON S. VIANA</p>
+</header>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm card-custom">
+                <div class="card-body p-4">
+
+                    <h4 class="text-center mb-3">Aula - Topicos Desenvolvimento de Sistemas (21/01/2026)</h4>
+
+                    <ul>
+                        <li>Construção do App Móvel usando o Plugin Flutter/Dart do VS Code</li>
+                        <li>Componentes/Widgets: ListView</li>
+                    </ul>
+					<h4>Código para download</h4>
+                    <div class="text-center mt-4">
+                     <code>
+					 <pre style="text-align:left;">
+					 
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Receita Flutter',
+      debugShowCheckedModeBanner: false,
+      home: const ReceitaPage(),
+    );
+  }
+}
+
+class ReceitaPage extends StatelessWidget {
+  const ReceitaPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Receita do Dia'),
+        backgroundColor: Colors.green,
+      ),
+      body: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          desenhaReceita(w),
+          desenhaReceita(w),
+          desenhaReceita(w),
+          desenhaReceita(w)
+        ],
+      ),
+    );
+  }
+
+  Widget desenhaReceita(double w) {
+    return Container(
+      width: w,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.green, width: 3),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Imagem
+          SizedBox(
+            width: w,
+            height: 180,
+            child: Image.asset(
+              'assets/prato-lasanha.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          // Título
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 12),
+            child: Text(
+              'Lasanha Caseira',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 8),
+
+          // Curtidas
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Row(
+              children: const [
+                Icon(Icons.favorite, color: Colors.red),
+                SizedBox(width: 6),
+                Text('120 curtidas'),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          // Descrição
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 12),
+            child: Text(
+              'Para preparar esta deliciosa lasanha caseira, comece cozinhando a massa conforme as instruções da embalagem até que fique macia, porém firme. Em uma panela, refogue a carne moída com cebola e alho até dourar, acrescentando molho de tomate, sal e temperos a gosto. Em um refratário, monte a lasanha alternando camadas de massa, molho, carne e queijo, repetindo o processo até finalizar os ingredientes. Leve ao forno preaquecido por aproximadamente 40 minutos, até que o queijo esteja completamente derretido e levemente dourado. Retire do forno, aguarde alguns minutos e sirva ainda quente.',
+              textAlign: TextAlign.justify,
+            ),
+          ),
+
+          const SizedBox(height: 16),
+
+          // Botões inferiores
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: const [
+                Icon(Icons.share),
+                SizedBox(width: 20),
+                Icon(Icons.print),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 12),
+        ],
+      ),
+    );
+  }
+}
+
+					 </pre>
+					 </code>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
